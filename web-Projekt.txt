@@ -1,0 +1,61 @@
+WEB programiranje - projekt
+
+Prije svega molim vas da kod komentirate, bolje da ima viška komentara nego manjka. Također commitove, komentare, varijable... neka vam budu na engleskom jeziku.
+
+Cilj je napraviti web site za knjižnicu
+Imat ćemo login page koji omogućava logiranje i registraciju korisnika.
+Korisnike čuvamo u bazi
+
+Nakon login pagea slijedi glavna stranica na kojoj ćemo imati popis svih knjiga.
+Popis se stavlja u bazu te ćemo ga iz baze dohvaćati i ispisivati na stranicu.
+Kao dodatnu mogućnost bi mogli staviti mogućnost da admin može obrisati korsnika/knjige iz baze podataka preko web sučelja.
+Na glavnoj stranici će se nalaziti button-i pomoću kojeg ćemo moći filtrirati/poredati knjige.
+Npr. želimo knjige koje su krimići ili želimo da su knjige poslagane abecedno itd.
+
+Svaka stranica naravno mora biti responzivna i mislim da je za to najbolje koristiti w3css
+(https://www.w3schools.com/w3css/w3css_responsive.asp) (AKO VAM TO NE PAŠE RECITE PA ĆEMO SKONTATI ALTERNATIVU)
+Koristit ćemo bazu podataka koje je profesor koristio na predavanju(MySQL). 
+Za login se koristi JS i PHP kao i za filtriranje knjiga na glavnom stranici.
+Tako da mislim da ćemo s time pokriti dovoljno "tehnologija".
+
+Možda ako nam ostane vremena možemo napraviti i košaricu koju smo radili na LV-u.
+
+Zadaci:
+Moja malenkost će odraditi Login/Register page sa svim provjerama koje trebaju biti. Također ću se pobrinuti za dodavanje korisnika u bazu te njihovo logiranje.
+
+Mislio sam da bi Nikola mogao napraviti bazu za knjige te njih ispisati na stranicu (za testiranje je potrebno dodati cca 5 različitih knjiga, kasnije ćemo nadodati još). Također pokušati skontati filtre za te knjige. 
+(Predavanje za bazu: https://biggoldbutton.ferit.hr/playback/presentation/2.0/playback.html?meetingId=231e028f81e1b1a69933642de2d496deeed8be75-1618990195906)
+
+Kosić bi onda mogao početi main page tako da napravi navigaciju(ne treba biti funkcionalna 
+već samo grubi template koji možemo nadograditi). Dakle treba 3 dijela navigaciju na vrhu, izbornik 
+na desnoj/lijevoj strani koji ćemo koristiti za filtriranje, sredinu stranice u kojoj ćemo ispisivati knjige 
+te footer koji će sadržavati neke informacija. Napominjem ne treba biti sve funkcionalno nego treba biti
+posloženo i responzivno.
+
+w3 css tutorial:
+https://www.youtube.com/watch?v=PJHBKwbf4Us
+
+Login page:
+
+https://get.foundation/building-blocks/blocks/translucent-form-overlay.html?fbclid=IwAR2wXDcHq60-OfppxmUuKx9GN9q3hAa0PNhbmRgDkFwsQlVXjURJQlo_5mw
+https://www.youtube.com/watch?v=EHYR_CD8zgo&list=LL&index=7
+
+
+Main page template:
+https://demo.hasthemes.com/boighor-preview/boighor/shop-grid.html
+https://demo.hasthemes.com/boighor-preview/boighor/shop-list.html
+https://get.foundation/templates-previews-sites-f6-xy-grid/blog.html
+
+Templates for everything:
+
+https://get.foundation/building-blocks/
+https://get.foundation/templates
+
+Picture download:
+
+https://www.pexels.com/search/sign%20up/
+
+
+Omrčenov link za responzivni dizajn
+U videu je čovjek napravio potpunu stranicu (vjerujem da će Kosiću dosta pomoći)
+https://www.youtube.com/watch?v=p0bGHP-PXD4
