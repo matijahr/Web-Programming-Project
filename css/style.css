@@ -1,0 +1,242 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section
+{
+    position: relative;
+    min-height: 100vh;
+    background: #557085;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    padding: 20px;
+    transition: 0.5s;
+}
+
+section.active
+{
+    /* #8b877e */
+    background: #8b957e;
+}
+
+section .container
+{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+section .container .user
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+section .container .user .imgBox
+{
+    position: relative;
+    /*width: 50%;*/
+    height: 100%;
+    transition: 0.5;
+}
+
+section .container .user .imgBox img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .container .user .formBox
+{
+    position: relative;
+    /*width: 50%;*/
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    transition: 0.5s;
+}
+
+section .container .user .formBox h1
+{
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+section .container .user .formBox input
+{
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    color: #555;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: none;
+    font-size: 14px;
+    margin: 8px;
+    font-weight: 300;
+}
+
+section .container .user .formBox input[type="submit"]
+{
+    max-width: 100px;
+    background: #557085;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+section .container .user.signUpBox .formBox input[type="submit"]
+{
+    background: #48584b;
+}
+
+section .container .user .formBox .switch 
+{
+    position: relative;
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+
+section .container .user .formBox .switch .goToSingUp
+{
+    font-weight: 600;
+    text-decoration: none;
+    color: #577eff;
+}
+
+section .container .user .formBox .switch .goToSingIn
+{
+    font-weight: 600;
+    text-decoration: none;
+    color: #48584b;
+}
+
+section .container .user.signUpBox
+{
+    pointer-events: none;
+}
+
+section .container .user.signUpBox .formBox
+{
+    top: 100%;
+}
+
+section .container .user.signUpBox .imgBox
+{
+    top: -100%;
+    transition: 0.5s;
+}
+
+/* if div is active */
+/*Login screen*/
+section .container.active .user.signUpBox .formBox
+{
+    top: 0;
+}
+
+section .container.active .user.signUpBox .imgBox
+{
+    top: 0;
+}
+
+section .container.active .user.signUpBox
+{
+    pointer-events: initial;
+}
+
+/*Registraion screen*/
+section .container .signInBox .formBox
+{
+    top: 0;
+}
+
+section .container.active .signInBox .formBox
+{
+    top: 100%;
+}
+
+section .container .signInBox .imgBox
+{
+    top: 0;
+    transition: 0.5s;
+}
+
+section .container.active .signInBox .imgBox
+{
+    top: -100%;
+}
+
+
+
+/* Responsive */
+@media (max-width: 993px)
+{
+    section .container
+    {
+        max-width: 400px;
+    }
+    
+    section .container .imgBox
+    {
+        display: none;
+    }
+
+    section .container .user .formBox
+    {
+        width: 100%;
+    }
+    
+    section .container.active .signInBox .formBox
+    {
+        top: -100%;
+    }
+}
+
+section .container.active .signUpBox .formBox #regErrMsg
+{
+    display: block;
+    margin-left: 8px;
+    color: red;
+
+}
+section .container.active .signInBox .formBox #logingErrMsg
+{
+    display: block;
+    margin-left: 8px;
+    color: red;
+
+}
+
