@@ -1,0 +1,204 @@
+/*Utilities *-classes used all around the website*/
+.container{
+    max-width: 1100px; /*limited size container so it doesn't take all page width*/
+    margin: 0 auto; /*we want the container in the middle so we set the margin to zero on top and bottom and auto on left and right*/ 
+    overflow:auto; /*to get rid of blank space beneath the heading caused by heading margin set to 10px*/
+    padding: 0 40px; /*padding zero on top and bottom and 40 left and right*/
+
+}
+
+.card /*creates card look*/{
+    background-color: white;
+    color: #333;
+    border-radius: 10px; /*rounded on the edges*/
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2); /*horizontal offset 0, vertical offset 3px, 10px blur,0.2 transparency of color*/
+    padding: 20px;
+    margin: 10px;
+}
+
+
+.btn /*base button*/{
+    display: inline-block;
+    padding: 10px 30px; /*10px top and bottom, 30px left and right*/
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px; /*adding rounding on edges*/
+}
+
+
+.btn-outline{
+    background-color: transparent; 
+    border: 1px #fff solid;
+}
+
+.btn:hover{
+    transform: scale(0.98); /*when we hover over button we scale it down a little bit*/
+}
+
+
+/*Backgrounds & colored buttons*/
+.bg-primary, .btn-primary{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.bg-secondary, .btn-secondary{
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.bg-dark, .btn-dark{
+    background-color: var(--dark-color);
+    color: white;
+}
+
+
+.bg-light, .btn-light{
+    background-color: var(--light-color);
+    color: #333;
+}
+
+.bg-primary a , 
+.btn-primary a,
+.bg-secondary a,
+.btn-secondary a,
+.bg-dark a ,
+.btn-dark a{
+    color: white;
+}
+
+
+/*Text colors*/
+.text-primary {
+    color: var(--primary-color);
+    
+}
+.text-secondary {
+    color: var(--secondary-color);
+   
+}
+.text-dark {
+    color: var(--dark-color);
+   
+}
+
+.text-light {
+    color: var(--light-color);
+    
+}
+
+
+/*Text sizes */
+.lead{
+    font-size: 20px;
+}
+.sm{
+    font-size: 1rem;
+}
+.md{
+    font-size: 2rem;
+}
+.lg{
+    font-size: 3rem;
+}
+.xl{
+    font-size: 4rem;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+.flex{
+    display: flex; /*turns it into a flex column*/
+    justify-content: center; /*moves everything to the center on the horizontal axis*/
+    align-items: center; /*for vertical aligment*/
+    height: 100%; /*height 100% of container*/
+}
+
+.grid{
+    display: grid; /*doesn't automatically turn it into a row like it does with flexbox, we have to add another property*/
+    grid-template-columns: repeat(2,1fr); /*defining how big, how wide we want each column,fr-fraction of entire space,repeat twice 1fr*/
+    gap: 20px; /*grid gap to add space between grid columns*/
+    justify-content: center; 
+    align-items: center;
+    height: 100%; /*100% height of it's container*/
+
+}
+
+/*when we're using a grid class it's taking the first two divs out of three and it's splitting them in two*/
+.grid-3{
+    grid-template-columns:repeat(3,1fr) ; /*using repeat 3 to place them all in same row*/
+}
+
+
+
+/*Margin classes,whenever we want to use top and bottom margines we can use these classes*/
+.my-1{
+    margin: 1rem 0; /*margin on top and bottom 1rem-css unit that basically means it's a multiplier of the roots elements font size, meaning the html tag which is the default 16px, 1rem=16px*1 */
+}
+.my-2{
+    margin: 1.5rem 0;
+}
+.my-3{
+    margin: 2rem 0;
+}
+.my-4{
+    margin: 3rem 0;
+}
+.my-5{
+    margin: 4rem 0;
+}
+
+/*places where we'll need margins all the way around*/
+.m-1{
+    margin: 1rem ;
+}
+.m-2{
+    margin: 1.5rem ;
+}
+.m-3{
+    margin: 2rem ;
+}
+.m-4{
+    margin: 3rem ;
+}
+.m-5{
+    margin: 4rem ;
+}
+
+/*Padding*/
+.py-1{
+    padding: 1rem 0;
+}
+.py-2{
+    padding: 1.5rem 0;
+}
+.py-3{
+    padding: 2rem 0;
+}
+.py-4{
+    padding: 3rem 0;
+}
+.py-5{
+    padding: 4rem 0;
+}
+
+.p-1{
+    padding: 1rem ;
+}
+.p-2{
+    padding: 1.5rem ;
+}
+.p-3{
+    padding: 2rem ;
+}
+.p-4{
+    padding: 3rem ;
+}
+.p-5{
+    padding: 4rem ;
+}
