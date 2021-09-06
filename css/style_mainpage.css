@@ -1,0 +1,553 @@
+/*font style from google fonts*/@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+
+:root /*scope*/{
+    --primary-color: #2F4F4F;
+    --secondary-color:#8B0000;
+    --dark-color:black;
+    --light-color: #f4f4f4;
+    --tile-color:#008080;
+}
+
+
+/*all elements*/ 
+*{
+    box-sizing: border-box; /*allows us to add padding and borders and stuff without having to add to the width of an element*/
+    margin: 0;   /*zeroing margin on everything*/
+}
+
+
+
+body{
+    font-family: 'Lato',sans-serif;
+    color:#333;
+    line-height: 1.6; /*bigger line height to spread things out a little bit*/
+}
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+ul{
+    list-style-type: none; /*make sure we dont have any bullet points so list type none*/
+}
+
+li {
+    list-style: none;
+  }
+
+a{
+    text-decoration: none; /*to get rid of underline text decoration none*/
+    color: #333; 
+}
+a:hover{
+    color: #8B0000;
+}
+
+
+h1,
+h2,h3,h4,h5{
+    font-weight: 600; /*it will make headings a little less bold*/
+    line-height: 1.2;
+    margin: 10px 0; /*margin top and bottom 10 and left and right 0*/
+}
+
+p {
+margin: 10px 0; /*margin on paragraphs so they're not squished together so that you can tell them apart*/
+}
+
+img{
+    width: 100%; /*width 100 which will keep the images within their container so if it's a large image it's not going to bust out of it's container*/ 
+}
+
+
+
+
+
+.card /*creates card look*/{
+  background-color: white;
+  color: #333;
+  border-radius: 10px; /*rounded on the edges*/
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2); /*horizontal offset 0, vertical offset 3px, 10px blur,0.2 transparency of color*/
+  padding: 20px;
+  margin: 10px;
+}
+
+
+
+
+
+.btn /*base button*/{
+    display: inline-block;
+    padding: 10px 30px; /*10px top and bottom, 30px left and right*/
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px; /*adding rounding on edges*/
+}
+
+
+.btn-outline{
+    background-color: transparent; 
+    border: 1px #fff solid;
+}
+
+.btn:hover{
+    transform: scale(0.98); /*when we hover over button we scale it down a little bit*/
+}
+
+
+
+
+
+
+
+/*Backgrounds & colored buttons*/
+.bg-primary, .btn-primary{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.bg-secondary, .btn-secondary{
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.bg-dark, .btn-dark{
+    background-color: var(--dark-color);
+    color: white;
+}
+
+
+.bg-light, .btn-light{
+    background-color: var(--light-color);
+    color: #333;
+}
+
+.bg-primary a , 
+.btn-primary a,
+.bg-secondary a,
+.btn-secondary a,
+.bg-dark a ,
+.btn-dark a{
+    color: white;
+}
+
+
+/*Text colors*/
+.text-primary {
+    color: var(--primary-color);
+    
+}
+.text-secondary {
+    color: var(--secondary-color);
+   
+}
+.text-dark {
+    color: var(--dark-color);
+   
+}
+
+.text-light {
+    color: var(--light-color);
+    
+}
+
+
+/*Text sizes */
+.lead{
+    font-size: 20px;
+}
+.sm{
+    font-size: 1rem;
+}
+.md{
+    font-size: 1.5rem;
+}
+.lg{
+    font-size: 3rem;
+}
+.xl{
+    font-size: 6rem;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+.flex{
+    display: flex; /*turns it into a flex column*/
+    justify-content: center; /*moves everything to the center on the horizontal axis*/
+    align-items: center; /*for vertical aligment*/
+    height: 100%; /*height 100% of container*/
+}
+
+.grid{
+    display: grid; /*doesn't automatically turn it into a row like it does with flexbox, we have to add another property*/
+    grid-template-columns: repeat(2,1fr); /*defining how big, how wide we want each column,fr-fraction of entire space,repeat twice 1fr*/
+    gap: 20px; /*grid gap to add space between grid columns*/
+    justify-content: center; 
+    align-items: center;
+    height: 100%; /*100% height of it's container*/
+
+}
+
+/*when we're using a grid class it's taking the first two divs out of three and it's splitting them in two*/
+.grid-3{
+    grid-template-columns:repeat(3,1fr) ; /*using repeat 3 to place them all in same row*/
+}
+
+
+p.thick {
+  font-weight: bold;
+  color:var(--tile-color);
+}
+
+
+
+/*Margin classes,whenever we want to use top and bottom margines we can use these classes*/
+.my-1{
+    margin: 1rem 0; /*margin on top and bottom 1rem-css unit that basically means it's a multiplier of the roots elements font size, meaning the html tag which is the default 16px, 1rem=16px*1 */
+}
+.my-2{
+    margin: 1.5rem 0;
+}
+.my-3{
+    margin: 2rem 0;
+}
+.my-4{
+    margin: 3rem 0;
+}
+.my-5{
+    margin: 4rem 0;
+}
+
+/*places where we'll need margins all the way around*/
+.m-1{
+    margin: 1rem ;
+}
+.m-2{
+    margin: 1.5rem ;
+}
+.m-3{
+    margin: 2rem ;
+}
+.m-4{
+    margin: 3rem ;
+}
+.m-5{
+    margin: 4rem ;
+}
+
+/*Padding*/
+.py-1{
+    padding: 1rem 0;
+}
+.py-2{
+    padding: 1.5rem 0;
+}
+.py-3{
+    padding: 2rem 0;
+}
+.py-4{
+    padding: 3rem 0;
+}
+.py-5{
+    padding: 4rem 0;
+}
+
+.p-1{
+    padding: 1rem ;
+}
+.p-2{
+    padding: 1.5rem ;
+}
+.p-3{
+    padding: 2rem ;
+}
+.p-4{
+    padding: 3rem ;
+}
+.p-5{
+    padding: 4rem ;
+}
+
+
+
+/*Navbar*/
+.navbar{
+    background-color: var(--primary-color) ;
+    color: #fff; /*text color*/
+    height: 70px;
+}
+
+.navbar ul {
+    display: flex; /*we want links to be in a row horizontally*/
+}
+
+.navbar a{
+    color: #fff; 
+    padding: 10px; /*to break them up a little bit*/
+    margin: 0 5px; /*0 top and bottom, 5 left and right*/
+}
+
+.navbar a:hover {
+    border-bottom:2px #fff solid;/*when we hover over navbar links white underline appears beneath them*/
+}
+
+.navbar .flex{
+    justify-content: space-between; /*puts space between content on navbar so it's not next to each other,takes remaining space from both sides and puts it between flex items*/
+}
+
+
+
+
+/*Page-head*/
+.page-head{
+    height:350px;
+    background-image: url(https://wallpaperaccess.com/full/1927118.jpg);
+    color: black;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size:cover /* Resize the background image to cover the entire container */
+}
+
+ /* Products */
+ .section .product-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    max-width: 130rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+  
+  .product {
+    overflow: hidden;
+  }
+  
+  .product .img-container {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .product .img-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .product .bottom {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .product .bottom a {
+    margin-bottom: 1rem;
+    font-weight: inherit;
+    font-size: 1.5rem;
+  }
+  
+ 
+ 
+  .product i {
+    transition: all 300ms ease-in-out;
+  }
+  
+  
+  .products {
+    margin-top: 10rem;
+  }
+  
+  .products-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 3fr;
+    gap: 0 1rem;
+  }
+
+.col-1-of-4 li{
+    font-size: 17px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px  #ccc solid;
+}
+
+.col-1-of-4 li a:hover{
+    font-weight: bold;
+}
+  
+  .col-3-of-4 .product-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .col-3-of-4 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  @media only screen and (max-width: 996px) {
+    .col-3-of-4 .product-layout {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .col-3-of-4 form {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 3rem;
+  }
+  
+  .col-3-of-4 form .item {
+    margin-right: 1rem;
+  }
+  
+  .col-3-of-4 form label {
+    color: var(--grey1);
+  }
+  
+  .col-3-of-4 form select {
+    font-family: "Open Sans", sans-serif;
+    padding: 1rem;
+    width: 10rem;
+    border: 1px solid #f2f2f2;
+    outline: none;
+  }
+  
+  .col-3-of-4 form a {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border-radius: 4rem;
+    margin-right: 1rem;
+    background-color: var(--primary);
+    color: var(--white);
+    transition: all 300ms ease-in-out;
+  }
+  
+  .col-3-of-4 form a:hover {
+    background-color: var(--black);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .products-layout {
+      padding: 0 5rem;
+    }
+  
+    .col-3-of-4 form {
+      flex-direction: column;
+      align-items: end;
+    }
+  
+    .col-3-of-4 form a {
+      margin-right: 0;
+    }
+  
+    .col-3-of-4 form .item {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media only screen and (max-width: 567px) {
+    .col-3-of-4 .product-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .col-1-of-4 .block-title {
+    color: var(--grey1);
+    margin-bottom: 1.6rem;
+  }
+  
+  .col-1-of-4 h3 {
+    font-size: 2.7rem;
+    font-weight: inherit;
+  }
+  
+  .col-1-of-4 div {
+    margin-bottom: 8rem;
+  }
+  
+  .block-content li {
+    margin-bottom: 1rem;
+  }
+  
+  .block-content li label {
+    color: var(--grey2);
+    margin-left: 1rem;
+  }
+  
+  .block-content li label small {
+    font-size: 1rem;
+  }
+  
+  .block-content li input {
+    outline: none;
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    .products-layout {
+      grid-template-columns: 1fr;
+      gap: 4rem 0;
+    }
+  }
+
+
+/*Footer*/
+.footer{
+    margin-top: 40px;
+}
+.footer .social a{
+    margin: 0 10px; /*spreading out network icons*/
+}
+
+
+/*Tablets and under*/
+@media(max-width: 768px){
+    .grid {
+        grid-template-columns: 1fr; /*want everything to be in one single column*/
+        grid-template-rows: 1fr; /*want everything to be in one single row*/
+    }
+
+    .page-head {
+        text-align: center;
+    }
+
+    .page-head img {
+        justify-self: center;
+    }
+}
+
+/*Mobile*/
+@media(max-width: 500px){
+    .navbar{
+        height: 150px; /*want to put menu items under the logo*/
+    }
+    .navbar .flex{
+        flex-direction: column; /*will put the logo and nav on top of each other*/
+    }
+    .navbar ul{
+        padding: 10px;
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+  
+ /*Utilities *-classes used all around the website*/
+.container{
+  max-width: 1100px; /*limited size container so it doesn't take all page width*/
+  margin: 0 auto; /*we want the container in the middle so we set the margin to zero on top and bottom and auto on left and right*/ 
+  overflow:auto; /*to get rid of blank space beneath the heading caused by heading margin set to 10px*/
+  padding: 0 40px; /*padding zero on top and bottom and 40 left and right*/
+
+}
+    
+ 
+  
