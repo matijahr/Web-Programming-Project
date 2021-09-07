@@ -237,3 +237,6 @@ section .container.active .signInBox .formBox #logingErrMsg
 
 }
 
+#regUser {
+    z-index: 1000;
+}

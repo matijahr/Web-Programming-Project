@@ -1,6 +1,22 @@
 <?php
+require_once 'connectPDO.php';
 session_start();
+
+if(isset($_SESSION['currentGenre'])){
+  unset($_SESSION['currentGenre']);
+}
+
+$sql = <<<EOSQL
+SELECT * FROM books
+EOSQL;
+
+$query = $conn->prepare($sql);
+
+$query->execute();
+$query->setFetchMode(PDO::FETCH_ASSOC);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +27,7 @@ session_start();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="css/style_mainpage.css">
+  <script src="jQuerry.min.js"></script>
   <title>eLibrary</title>
 </head>
 
@@ -54,9 +71,11 @@ session_start();
           </div>
 
           <ul class="block-content">
+
             <li>
+
               <label for="">
-                <a href="#">Biography</a>
+                <a href="#" id="genre-fantasy">Fantasy</a>
 
               </label>
             </li>
@@ -64,7 +83,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Business</a>
+                <a href="#" id="genre-mystery">Mystery</a>
 
               </label>
             </li>
@@ -72,7 +91,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Cookbooks</a>
+                <a href="#" id="genre-philosophy">Philosophy</a>
 
               </label>
             </li>
@@ -80,7 +99,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Health & Fitness</a>
+                <a href="#" id="genre-classics">Classics</a>
 
               </label>
             </li>
@@ -88,7 +107,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">History</a>
+                <a href="#" id="genre-romantic">Romantic</a>
 
               </label>
             </li>
@@ -96,7 +115,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Mystery</a>
+                <a href="#" id="genre-comedy">Comedy</a>
 
               </label>
             </li>
@@ -104,7 +123,7 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Inspiration</a>
+                <a href="#" id="genre-selfhelp">Self Help</a>
 
               </label>
             </li>
@@ -112,34 +131,12 @@ session_start();
             <li>
 
               <label for="">
-                <a href="#">Romance</a>
+                <a href="#" id="genre-biography">Biography</a>
 
               </label>
             </li>
 
-            <li>
-
-              <label for="">
-                <a href="#">Fiction/Fantasy</a>
-
-              </label>
-            </li>
-
-            <li>
-
-              <label for="">
-                <a href="#">Self-Improvement</a>
-
-              </label>
-            </li>
-
-            <li>
-
-              <label for="">
-                <a href="#">Humor</a>
-
-              </label>
-            </li>
+          
           </ul>
         </div>
       </div>
@@ -151,24 +148,24 @@ session_start();
           <div class="item">
             <label for="sort-by">Sort By</label>
             <select name="sort-by" id="sort-by">
-              <option value="title" selected="selected">Name</option>
-              <option value="author-name">Author Name</option>
+              <option value="Name" selected="selected">Name</option>
+              <option value="Author Name">Author Name</option>
             </select>
           </div>
           <div class="item">
             <label for="order-by">Order</label>
-            <select name="order-by" id="sort -by">
+            <select name="order-by" id="sort-by1">
               <option value="ASC" selected="selected">ASC</option>
               <option value="DESC">DESC</option>
             </select>
           </div>
-          <button class="btn bg-primary">Apply</button>
+          <button class="btn bg-primary applySortBtn">Apply</button>
         </form>
 
 
         <!--Books-->
-        <div class="product-layout">
-
+        <div class="product-layout prikaz-knjiga">
+          <!--
           <div class="product">
             <div class="img-container">
               <img src="./images/product-1.jpg" alt="" />
@@ -179,105 +176,27 @@ session_start();
                 <p class="text-secondary sm">J.R.R.Tolkien</p>
               </div>
             </div>
-          </div>
+          </div> 
+          -->
 
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
+          <?php
+          
+          foreach($query as $row){
+              echo "<div class='product'>
+              <div class='img-container'>
+                <img src='". $row['image_url'] ."' alt='' />
               </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
+              <div class='bottom'>
+                <span class='text-dark md'>". $row['book_name'] ."</span>
+                <div class='author-name'>
+                  <p class='text-secondary sm'>". $row['author_name'] ."</p>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div>
-
-
+            </div>";
+          }
+          unset($conn);
+          ?>
+          
 
 
         </div>
@@ -304,7 +223,44 @@ session_start();
     </div>
   </footer>
 
+<script>
+
+  $("#genre-fantasy").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Fantasy"
+    });
+  });
+
+  $("#genre-mystery").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Mystery"
+    });
+  });
+
+  $("#genre-philosophy").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Philosophy"
+    });
+  });
+
+  $("#genre-classics").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Classic"
+    });
+  });
+
+  $(".applySortBtn").click(function(){
+    event.preventDefault();
+    sortingBy = $("#sort-by").val();
+    orderOfSorting = $("#sort-by1").val();
+    
+    $(".prikaz-knjiga").load("ucitajSortirano.php", {
+      sort: sortingBy,
+      order: orderOfSorting
+    });
+  });
+
+</script>
 
 </body>
-
 </html>
