@@ -226,6 +226,8 @@
                                 // username available
                                 $("#available").text("Available");
                                 $("#available").css("color", "green");
+                                signUpBtn.disabled = false;
+                                signUpBtn.style.color = "#fff"
 
                             }else{
                                 // username unavailable

@@ -1,5 +1,5 @@
 <?php
-    //require_once 'connect.php';
+
     require_once 'connectPDO.php';
     session_start();
 
@@ -16,7 +16,6 @@
         SELECT * FROM users WHERE username='{$username}' AND userpassword='{$pwdmd5}'
         EOSQL;
 
-        //$result = $conn->query($sql);
         $query = $conn->prepare($sql);
         $query->execute();
 
@@ -25,14 +24,14 @@
                 echo("No such user");
             }else{
                 // convert from object to associative field
-                //$row = $result->fetch_assoc();
                 $query->setFetchMode(PDO::FETCH_ASSOC);
                 
-                // store userdata in session for mainPage.php
-                $_SESSION["user"] = $row["user"];
-                $_SESSION["username"] = $username;
-                $_SESSION["email"] = $row["email"];
-
+                foreach($query as $row){
+                    // store userdata in session for mainPage.php
+                    $_SESSION["userrole"] = $row["userrole"];
+                    $_SESSION["username"] = $username;
+                }
+                
                 echo("Login successful");
                 unset($conn);
             }

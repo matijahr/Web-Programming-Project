@@ -181,22 +181,35 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
           <?php
           
           foreach($query as $row){
-              echo "<div class='product'>
+              echo "<div class='product' data-row='" . $row['ID'] . "'>
               <div class='img-container'>
                 <img src='". $row['image_url'] ."' alt='' />
               </div>
+
               <div class='bottom'>
-                <span class='text-dark md'>". $row['book_name'] ."</span>
+                <span class='text-dark md' id='bookName'>". $row['book_name'] ."</span>
                 <div class='author-name'>
-                  <p class='text-secondary sm'>". $row['author_name'] ."</p>
+                  <p class='text-secondary sm' id='bookAuthor'>". $row['author_name'] ."</p>
                 </div>
-              </div>
+                ";
+          
+          ?>
+                
+          <?php
+                
+                if($_SESSION["userrole"]==1){
+                  echo"
+                  </div>
+                    <button type='button' class='delete' id='deleteBook' data-delete='" . $row['ID'] . "' > Obriši </button>
+                  <div>";
+                }
+
+                echo"                 
+              </div>              
             </div>";
           }
           unset($conn);
           ?>
-          
-
 
         </div>
       </div>
@@ -223,6 +236,34 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
   </footer>
 
 <script>
+
+  //delete a book from database
+  const bookName = document.getElementById("bookName");
+  const bookAuthor = document.getElementById("bookAuthor");
+
+  $(document).on("click", ".delete", function() {
+                let uid = parseInt($(this).data("delete"));
+
+                //remove div element from html
+                $(this).parent("div").remove();
+
+                $.ajax({
+                    url: "ajax_deleteBook.php",
+                    type: "POST",
+                    data: {
+                        userid: uid
+                    },
+                    success: function(returnedData) {
+                        if (returnedData == "Success!") {
+                            alert("A book was deleted")
+                        } else {
+                            alert("There was an error deleting a user!")
+                        }
+
+                    },
+                    async: false
+                });                
+            });
 
   $("#genre-fantasy").click(function(){
     $(".prikaz-knjiga").load("ucitajZanr.php", {

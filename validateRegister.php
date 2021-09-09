@@ -2,8 +2,8 @@
     if( $_SERVER["REQUEST_METHOD"] === "POST" ){
         session_start();
         require_once 'validationFunctions.php';
+        require_once 'connectPDO.php';
         require_once 'connect.php';
-        //require_once 'connectPDO.php';
 
         // get data from POST request
         $user = $_POST["user"];
@@ -41,25 +41,18 @@
             $san_user = filter_var($user, FILTER_SANITIZE_STRING);
             $san_email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-            // check if there is a user with same username
-            
-            // $result = $conn->query($sqlCheckUser);
-
-
             // storing to database
-            $sqlInsertUser = "INSERT INTO users (username,userpassword,user,email) 
-                VALUES ('{$san_username}','{$pwdmd5}','{$san_user}','{$san_email}')";
+            $sqlInsertUser = "INSERT INTO users (username,userpassword,user,email,userrole) 
+                VALUES ('{$san_username}','{$pwdmd5}','{$san_user}','{$san_email}','{0}')";
 
-            /*$query = $conn->prepare($sqlInsertUser);
-            $query->execute();*/
-            //$conn->lastInsertId();
-
-            $conn->query($sqlInsertUser);
-            $conn->insert_id;
+            $query = $conn->prepare($sqlInsertUser);
+            $query->execute();
 
             // store username into SESSION
             $_SESSION["username"] = $san_username;
+            $_SESSION["userrole"] = 0;
 
+            unset($conn);
             echo("User added");
         }
     }else{
