@@ -46,7 +46,7 @@
             <div class="user signUpBox w3-row">
 
                 <div class="formBox w3-half ">
-                    <!-- action="validateRegister.php" method="POST" -->
+
                     <form id="registrationFrom">
                         <h1>Create an account</h1>
                         <input type="text" placeholder="First and last name" id="regUser" required>

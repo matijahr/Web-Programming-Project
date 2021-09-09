@@ -162,15 +162,19 @@ section .container .user.signUpBox .imgBox
 
 /* if div is active */
 /*Login screen*/
-
 section .container.active .user.signUpBox .formBox
 {
-    top: 0; /* makes the element's top edge to move above/below its normal position */
+    top: 0;
 }
 
 section .container.active .user.signUpBox .imgBox
 {
     top: 0;
+}
+
+section .container.active .user.signUpBox
+{
+    pointer-events: initial;
 }
 
 /*Registraion screen*/
@@ -198,7 +202,6 @@ section .container.active .signInBox .imgBox
 
 
 /* Responsive */
-/* If a screen size is smaller than a medium screen (~990px) then remove pictures */
 @media (max-width: 993px)
 {
     section .container
@@ -237,6 +240,4 @@ section .container.active .signInBox .formBox #logingErrMsg
 
 }
 
-#regUser {
-    z-index: 1000;
-}
+    

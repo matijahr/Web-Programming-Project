@@ -22,10 +22,8 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,
-    initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-
   <link rel="stylesheet" href="css/style_mainpage.css">
   <script src="jQuerry.min.js"></script>
   <title>eLibrary</title>
@@ -38,6 +36,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
       <h1 class="logo">eLibrary</h1>
       <nav>
         <ul>
+          <li><p>Welcome  <i><?php echo($_SESSION["username"]); ?></i> </p> </li>
           <li><a href="mainpage.php" class="fas fa-home fa-2x"></a></li>
           <li><a href="contacts.php" class="fas fa-user fa-2x"></a></li>
           <li><a href="index.php" class="fas fa-sign-out-alt fa-2x"></a></li>

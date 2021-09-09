@@ -3,7 +3,8 @@
         session_start();
         require_once 'validationFunctions.php';
         require_once 'connect.php';
-        
+        //require_once 'connectPDO.php';
+
         // get data from POST request
         $user = $_POST["user"];
         $username = $_POST["username"];
@@ -41,21 +42,25 @@
             $san_email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
             // check if there is a user with same username
+            
+            // $result = $conn->query($sqlCheckUser);
 
-            $result = $conn->query($sqlCheckUser);
 
+            // storing to database
+            $sqlInsertUser = "INSERT INTO users (username,userpassword,user,email) 
+                VALUES ('{$san_username}','{$pwdmd5}','{$san_user}','{$san_email}')";
 
-                // storing to database
-                $sqlInsertUser = "INSERT INTO users (username,userpassword,user,email) 
-                    VALUES ('{$san_username}','{$pwdmd5}','{$san_user}','{$san_email}')";
+            /*$query = $conn->prepare($sqlInsertUser);
+            $query->execute();*/
+            //$conn->lastInsertId();
 
-                $conn->query($sqlInsertUser);
-                $conn->insert_id;
+            $conn->query($sqlInsertUser);
+            $conn->insert_id;
 
-                // store username into SESSION
-                $_SESSION["username"] = $san_username;
+            // store username into SESSION
+            $_SESSION["username"] = $san_username;
 
-                echo("User added");
+            echo("User added");
         }
     }else{
         echo("Error");
