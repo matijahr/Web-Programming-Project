@@ -433,6 +433,26 @@ p.thick {
   .col-3-of-4 form a:hover {
     background-color: var(--black);
   }
+
+  .hiddenDisplay{
+    display: none;
+  }
+
+  #addNewBookBtn{
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  #formNewArticle{
+    position: absolute;
+    background-color: #f2f2f2;
+    left: 70%;
+    top: 60%;
+    border: 1px solid #22697a;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+  }
   
   @media only screen and (max-width: 768px) {
     .products-layout {
@@ -523,6 +543,13 @@ p.thick {
     .page-head img {
         justify-self: center;
     }
+
+    #formNewArticle{
+      left: 50%;
+      top: 200%;
+      z-index: 1000;
+    }
+
 }
 
 /*Mobile*/
@@ -536,6 +563,12 @@ p.thick {
     .navbar ul{
         padding: 10px;
         background-color: rgba(0,0,0,0.1);
+    }
+
+    #formNewArticle{
+      left: 25%;
+      top: 210%;
+      z-index: 1000;
     }
 }
 

@@ -2,7 +2,6 @@
     if( $_SERVER["REQUEST_METHOD"] === "POST" ){
         session_start();
         require_once 'validationFunctions.php';
-        require_once 'connectPDO.php';
         require_once 'connect.php';
 
         // get data from POST request

@@ -30,6 +30,39 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+
+  <?php
+        if($_SESSION["userrole"]==1){
+          echo' <div id="newArticleForm" class="hiddenDisplay">
+          <form action="" method="post" id="insertArticleDB">
+              <div id="formNewArticle">
+                  <p id="formHeader">ADD NEW BOOK</p>
+                  <p>
+                      <label for="bookName">Name of the book: </label><br>
+                      <input type="text" name="bookName" id="bookName">
+                  </p>
+                  <p>
+                      <label for="authorName">Name of the author: </label><br>
+                      <input type="text" name="authorName" id="authorName">
+                  </p>
+                  <p>
+                      <label for="bookGenre">One genre that best describes it: </label><br>
+                      <input type="text" name="bookGenre" id="bookGenre">
+                  </p>
+                  <p>
+                      <label for="bookImgURL">Image URL of the new book: </label><br>
+                      <input type="text" name="bookImgURL" id="bookImgURL">
+                  </p>
+                  <p>
+                  <input type="submit" value="ADD NEW BOOK" name="insertBook" class="submit btn bg-primary" id="btnAddedNewItem">
+                </p>
+              </div>
+              
+          </form>
+        </div>';
+        }
+        ?>
+
   <!--Navbar-->
   <div class="navbar">
     <div class="container flex text-main">
@@ -37,7 +70,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
       <nav>
         <ul>
           <li><p>Welcome  <i><?php echo($_SESSION["username"]); ?></i> </p> </li>
-          <li><a href="mainpage.php" class="fas fa-home fa-2x"></a></li>
+          <li><a href="mainPage.php" class="fas fa-home fa-2x"></a></li>
           <li><a href="contacts.php" class="fas fa-user fa-2x"></a></li>
           <li><a href="index.php" class="fas fa-sign-out-alt fa-2x"></a></li>
         </ul>
@@ -98,7 +131,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             <li>
 
               <label for="">
-                <a href="#" id="genre-classics">Classics</a>
+                <a href="#" id="genre-classics">Classic</a>
 
               </label>
             </li>
@@ -106,7 +139,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             <li>
 
               <label for="">
-                <a href="#" id="genre-romantic">Romantic</a>
+                <a href="#" id="genre-romantic">Romance</a>
 
               </label>
             </li>
@@ -135,11 +168,101 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
               </label>
             </li>
 
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-scifi">Science Fiction</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-dystopian">Dystopian</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-adventure">Adventure</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-horror">Horror</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-thriller">Thriller</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-historicalfiction">Historical fiction</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-youngadult">Young Adult</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-childrens">Children's fiction</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-cooking">Cooking</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-art">Art</a>
+
+              </label>
+            </li>
+
+            <li>
+
+              <label for="">
+                <a href="#" id="genre-nonfiction">Nonfiction</a>
+
+              </label>
+            </li>
+
+
           
           </ul>
         </div>
       </div>
 
+      
 
       <!--Sorting-->
       <div class="col-3-of-4">
@@ -159,11 +282,16 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             </select>
           </div>
           <button class="btn bg-primary applySortBtn">Apply</button>
+          <button id="addNewBookBtn" class="btn bg-primary <?php if($_SESSION["userrole"]==0){echo 'hiddenDisplay';}?> ">Add new book</button>
+          
         </form>
 
+        
+
+        
 
         <!--Books-->
-        <div class="product-layout prikaz-knjiga">
+        <div id="booksShowcaseSection" class="product-layout prikaz-knjiga">
           <!--
           <div class="product">
             <div class="img-container">
@@ -200,7 +328,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                 if($_SESSION["userrole"]==1){
                   echo"
                   </div>
-                    <button type='button' class='delete' id='deleteBook' data-delete='" . $row['ID'] . "' > Obriši </button>
+                    <button type='button' class='delete btn bg-primary' id='deleteBook' data-delete='" . $row['ID'] . "' > Obriši </button>
                   <div>";
                 }
 
@@ -236,6 +364,15 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
   </footer>
 
 <script>
+  let newArticleForm = document.querySelector("#newArticleForm");
+  let booksShowcaseSection = document.querySelector("#booksShowcaseSection");
+
+  let btnAddBook = document.querySelector("#addNewBookBtn");
+  btnAddBook.addEventListener("click", toggleBookView);
+  function toggleBookView(event){
+    event.preventDefault();
+    newArticleForm.classList.toggle('hiddenDisplay');
+  }
 
   //delete a book from database
   const bookName = document.getElementById("bookName");
@@ -284,10 +421,102 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
   });
 
   $("#genre-classics").click(function(){
+    console.log("kliknulo");
     $(".prikaz-knjiga").load("ucitajZanr.php", {
       findGenre: "Classic"
     });
   });
+
+  $("#genre-romantic").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Romance"
+    });
+  });
+
+  $("#genre-comedy").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Comedy"
+    });
+  });
+
+  $("#genre-selfhelp").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Self Help"
+    });
+  });
+
+  $("#genre-biography").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Biography"
+    });
+  });
+
+  $("#genre-scifi").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Science Fiction"
+    });
+  });
+
+  $("#genre-dystopian").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Dystopian"
+    });
+  });
+
+  $("#genre-adventure").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Adventure"
+    });
+  });
+
+  $("#genre-horror").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Horror"
+    });
+  });
+
+  $("#genre-thriller").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Thriller"
+    });
+  });
+
+  $("#genre-historicalfiction").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Historical Fiction"
+    });
+  });
+
+  $("#genre-youngadult").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Young Adult"
+    });
+  });
+
+  $("#genre-childrens").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Children's fiction"
+    });
+  });
+
+  $("#genre-cooking").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Cooking"
+    });
+  });
+
+  $("#genre-art").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Art"
+    });
+  });
+
+  $("#genre-nonfiction").click(function(){
+    $(".prikaz-knjiga").load("ucitajZanr.php", {
+      findGenre: "Nonfiction"
+    });
+  });
+
 
   $(".applySortBtn").click(function(){
     event.preventDefault();
@@ -299,6 +528,59 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
       order: orderOfSorting
     });
   });
+
+  function isEmpty(str) {
+            return (!str || str.length === 0 );
+        }
+
+  $(document).on("click", ".submit", function() {
+            let bookName, authorName, genre, imgURL;
+            console.log("radi");
+
+            if(isEmpty($("#bookName").val()) || isEmpty($("#authorName").val()) || isEmpty($("#bookGenre").val()) || isEmpty($("#bookImgURL").val()) ){
+                alert("Sva polja moraju biti popunjena!");
+                return false;
+            }
+
+            if ($(this).attr("name") == "insertBook" && 
+            !($("#bookName").val().includes('<')) && 
+            !($("#bookName").val().includes('>')) && 
+            !($("#bookName").val().includes('=')) &&
+            !($("#authorName").val().includes('<')) && 
+            !($("#authorName").val().includes('>')) && 
+            !($("#authorName").val().includes('=')) &&
+            !($("#bookGenre").val().includes('<')) && 
+            !($("#bookGenre").val().includes('>')) && 
+            !($("#bookGenre").val().includes('=')) &&
+            !($("#bookImgURL").val().includes('<')) && 
+            !($("#bookImgURL").val().includes('>')) && 
+            !($("#bookImgURL").val().includes('=')) ) {
+
+                // get values from input
+                bookName = $("#bookName").val();
+                authorName = $("#authorName").val();
+                genre = $("#bookGenre").val();
+                imgURL = $("#bookImgURL").val();
+                
+
+                $.ajax({
+                    url: "insertBookInDB.php",
+                    type: "POST",
+                    data: {
+                        bName: bookName,
+                        aName: authorName,
+                        bookGenre: genre,
+                        bookImgURL: imgURL
+                    },
+                    success: function() {},
+                    async: false
+                });
+            } else {
+                alert("Ne smiju se upisivati sljedeci znakovi: '<', '>', '=' ");
+                return false;
+            }
+            location.reload();
+        });
 
 </script>
 
