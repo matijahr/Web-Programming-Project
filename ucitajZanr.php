@@ -26,8 +26,18 @@ foreach($query as $row){
       <div class='author-name'>
         <p class='text-secondary sm'>". $row['author_name'] ."</p>
       </div>
-    </div>
-  </div>";
+    ";
+
+    if($_SESSION["userrole"]==1){
+        echo"
+                  </div>
+                    <button type='button' class='delete btn bg-primary' id='deleteBook' data-delete='" . $row['ID'] . "' > Obriši </button>
+                  <div>";
+    }
+
+    echo"                 
+              </div>              
+            </div>";
 }
 unset($conn);
 

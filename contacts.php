@@ -17,7 +17,7 @@
             <h1 class="logo">Library.</h1>
             <nav>
                 <ul>
-                    <li><a href="mainpage.php" class="fas fa-home fa-2x"></a></li>
+                    <li><a href="mainPage.php" class="fas fa-home fa-2x"></a></li>
                     <li><a href="contacts.php" class="fas fa-user fa-2x"></a></li>
                     <li><a href="index.php" class="fas fa-sign-out-alt fa-2x"></a></li>
                    
