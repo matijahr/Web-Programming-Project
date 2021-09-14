@@ -161,7 +161,7 @@ section .container .user.signUpBox .imgBox
 }
 
 /* if div is active */
-/*Login screen*/
+/*Registraion screen*/
 section .container.active .user.signUpBox .formBox
 {
     top: 0;
@@ -177,7 +177,7 @@ section .container.active .user.signUpBox
     pointer-events: initial;
 }
 
-/*Registraion screen*/
+/*Login screen*/
 section .container .signInBox .formBox
 {
     top: 0;
@@ -225,7 +225,7 @@ section .container.active .signInBox .imgBox
     }
 }
 
-section .container.active .signUpBox .formBox #regErrMsg
+section .container .signUpBox .formBox #regErrMsg
 {
     display: block;
     margin-left: 8px;

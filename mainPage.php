@@ -292,22 +292,8 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
         <!--Books-->
         <div id="booksShowcaseSection" class="product-layout prikaz-knjiga">
-          <!--
-          <div class="product">
-            <div class="img-container">
-              <img src="./images/product-1.jpg" alt="" />
-            </div>
-            <div class="bottom">
-              <span class="text-dark md">The Hobbit</span>
-              <div class="author-name">
-                <p class="text-secondary sm">J.R.R.Tolkien</p>
-              </div>
-            </div>
-          </div> 
-          -->
 
-          <?php
-          
+          <?php          
           foreach($query as $row){
               echo "<div class='product' data-row='" . $row['ID'] . "'>
               <div class='img-container'>
@@ -319,8 +305,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                 <div class='author-name'>
                   <p class='text-secondary sm' id='bookAuthor'>". $row['author_name'] ."</p>
                 </div>
-                ";
-          
+                ";          
           ?>
                 
           <?php
@@ -375,9 +360,6 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
   }
 
   //delete a book from database
-  const bookName = document.getElementById("bookName");
-  const bookAuthor = document.getElementById("bookAuthor");
-
   $(document).on("click", ".delete", function() {
                 let uid = parseInt($(this).data("delete"));
 
@@ -535,7 +517,6 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
   $(document).on("click", ".submit", function() {
             let bookName, authorName, genre, imgURL;
-            console.log("radi");
 
             if(isEmpty($("#bookName").val()) || isEmpty($("#authorName").val()) || isEmpty($("#bookGenre").val()) || isEmpty($("#bookImgURL").val()) ){
                 alert("Sva polja moraju biti popunjena!");

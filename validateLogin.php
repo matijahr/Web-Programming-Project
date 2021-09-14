@@ -5,8 +5,8 @@
 
     if( $_SERVER["REQUEST_METHOD"] === "POST" ){
         // get data from POST request
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+        $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
+        $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
         
         // encrypt password with MD5
         $pwdmd5 = md5($password);
